@@ -10,7 +10,8 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Segoe UI', sans-serif;
-    background: #0d0d0d;
+    background: linear-gradient(135deg, #1e1b4b 0%, #0d0d0d 45%, #064e3b 100%);
+    background-attachment: fixed;
     color: #f0f0f0;
     padding: 16px;
   }
@@ -39,16 +40,34 @@
     width: 100%;
     padding: 12px;
     margin-bottom: 16px;
-    background: #0d0d0d;
+    background: #14141a;
     border: 1px solid #333;
     border-radius: 8px;
     color: #fff;
     font-size: 15px;
   }
+  input, select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+    background: #14141a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 15px;
+  }
+  input#expenseDate, input#authEmail { border-color: #60a5fa; }
+  input#expenseAmount { border-color: #f87171; }
+  select#expenseCategory { border-color: #fbbf24; }
+  input#expenseNote, input#authPassword { border-color: #a78bfa; }
+  input:focus, select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.15);
+  }
   button {
     width: 100%;
     padding: 14px;
-    background: #4ade80;
+    background: linear-gradient(135deg, #4ade80, #22d3ee);
     color: #000;
     border: none;
     border-radius: 8px;
