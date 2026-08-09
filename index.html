@@ -370,7 +370,8 @@
             <div style="font-size:12px;color:#777;">${exp.date || ''}</div>
           </div>
           <div class="expense-amount">₹ ${exp.amount.toFixed(2)}</div>
-        list.appendChild(item);
+`;
+list.appendChild(item);
       });
       document.getElementById('totalAmount').innerText = '₹ ' + total.toFixed(2);
     }, (err) => {
