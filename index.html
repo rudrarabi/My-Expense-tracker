@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>আমার খরচ ট্র্যাকার</title>
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#0d0d0d">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -325,6 +327,16 @@
       document.getElementById('totalAmount').innerText = '৳ ' + total.toFixed(2);
     }, (err) => {
       console.error(err);
+    });
+  }
+</script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./service-worker.js')
+        .then(() => console.log('Service Worker registered'))
+        .catch((err) => console.log('Service Worker registration failed:', err));
     });
   }
 </script>
