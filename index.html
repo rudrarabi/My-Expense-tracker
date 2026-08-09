@@ -312,6 +312,10 @@
       const totalBox = document.querySelector('.total');
       totalBox.classList.add('glow-effect');
       setTimeout(() => totalBox.classList.remove('glow-effect'), 700);
+     const utterance = new SpeechSynthesisUtterance('Expenses are getting too high though');
+      utterance.lang = 'en-US';
+      utterance.rate = 1;
+      speechSynthesis.speak(utterance);
     } catch (err) {
       alert('খরচ সেভ করতে সমস্যা হয়েছে: ' + err.message);
     }
