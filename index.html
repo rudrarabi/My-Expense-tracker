@@ -180,7 +180,7 @@
     signOut, onAuthStateChanged
   } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
   import {
-    getFirestore, collection, addDoc, query, where, orderBy,
+    getFirestore, collection, addDoc, query, where,
     onSnapshot, serverTimestamp
   } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
@@ -293,8 +293,7 @@
     if (unsubscribeExpenses) unsubscribeExpenses();
     const q = query(
       collection(db, 'expenses'),
-      where('uid', '==', uid),
-      orderBy('createdAt', 'desc')
+      where('uid', '==', uid)
     );
     unsubscribeExpenses = onSnapshot(q, (snapshot) => {
       const list = document.getElementById('expenseList');
@@ -306,7 +305,10 @@
       } else {
         emptyMsg.classList.add('hidden');
       }
-      snapshot.forEach(doc => {
+      const docs = [];
+      snapshot.forEach(d => docs.push(d));
+      docs.sort((a, b) => (b.data().createdAt?.seconds || 0) - (a.data().createdAt?.seconds || 0));
+      docs.forEach(doc => {
         const exp = doc.data();
         total += exp.amount;
         const item = document.createElement('div');
