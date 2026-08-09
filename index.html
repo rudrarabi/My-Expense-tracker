@@ -387,6 +387,13 @@
         .then(() => console.log('Service Worker registered'))
         .catch((err) => console.log('Service Worker registration failed:', err));
     });
+
+    let refreshing = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (refreshing) return;
+      refreshing = true;
+      window.location.reload();
+    });
   }
 </script>
 
