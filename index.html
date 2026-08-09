@@ -133,6 +133,14 @@
     animation: glowPulse 0.7s ease;
   }
 </style>
+ <script>
+  window.addEventListener('error', function(e) {
+    document.body.innerHTML = '<div style="padding:20px;color:#f87171;font-family:monospace;white-space:pre-wrap;">এরর হয়েছে:\n' + e.message + '\nফাইল: ' + e.filename + '\nলাইন: ' + e.lineno + '</div>';
+  });
+  window.addEventListener('unhandledrejection', function(e) {
+    document.body.innerHTML = '<div style="padding:20px;color:#f87171;font-family:monospace;white-space:pre-wrap;">Promise এরর:\n' + (e.reason && e.reason.message ? e.reason.message : e.reason) + '</div>';
+  });
+</script>
 </head>
 <body>
 
